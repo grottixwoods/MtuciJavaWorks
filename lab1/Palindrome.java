@@ -1,6 +1,5 @@
 package lab1;
 
-// finds palindromes
 class Palindrome {
   public static void main(String[] args) {
     String palindromes = "Palindromes: ";
@@ -14,7 +13,7 @@ class Palindrome {
     System.out.println(palindromes);
   }
 
-  // reverses string
+
   public static String reverseString(String str) {
     String result = "";
 
@@ -27,7 +26,7 @@ class Palindrome {
     return result;
   }
 
-  // returns true if string is palindrome
+
   public static boolean isPalindrome(String str) {
     return str.equals(reverseString(str));
   }
