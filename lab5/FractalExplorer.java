@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-
+// Все то же самое что и в 4лр
 public class FractalExplorer {
   private int displaySize;
   private JImageDisplay display;
@@ -25,7 +25,7 @@ public class FractalExplorer {
     display = new JImageDisplay(displaySize, displaySize);
   }
 
-  public void createAndShowGUI() {
+  public void createAndShowGUI() { // Выбор фрактала с помощью комбо бокса
     display.setLayout(new BorderLayout());
 
     JButton resetButton = new JButton("Reset");
@@ -109,7 +109,8 @@ public class FractalExplorer {
     }
   }
 
-  private class Chooser implements ActionListener {
+  private class Chooser implements ActionListener { //Вызывается окно , выбирается файл , либо создается новый png file, если нету в формате PNG
+                                                    //Реализуем интерфейс с помощью implements
     public void actionPerformed(ActionEvent e) {
       Object source = e.getSource();
       if (source instanceof JComboBox) {
@@ -124,7 +125,7 @@ public class FractalExplorer {
     }
   }
 
-  private class Saver implements ActionListener {
+  private class Saver implements ActionListener { // Класс с помощью которого  сохраняем картинку  с помощью class Chooser
     public void actionPerformed(ActionEvent e) {
       if (e.getActionCommand().equals("Save")) {
         JFileChooser fileChooser = new JFileChooser();
@@ -176,7 +177,7 @@ public class FractalExplorer {
     }
   }
 
-  public static void main(String[] args)
+  public static void main(String[] args) // Запуск программы
   {
     FractalExplorer displayExplorer = new FractalExplorer(800);
     displayExplorer.createAndShowGUI();

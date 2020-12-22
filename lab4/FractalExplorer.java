@@ -21,7 +21,7 @@ public class FractalExplorer {
     display = new JImageDisplay(displaySize, displaySize);
   }
 
-  public void createAndShowGUI() {
+  public void createAndShowGUI() { // Созадние интерфейса, кнопка ресета , по клику делается ивент на зум
     display.setLayout(new BorderLayout());
     JFrame myframe = new JFrame("Fractal Explorer");
 
@@ -44,7 +44,7 @@ public class FractalExplorer {
     myframe.setResizable(false);
   }
 
-  private void drawFractal() {
+  private void drawFractal() { // идет по Ш и В всего окна получает координаты значений фрактала , закрашивает их цветом в зависимости от итераций
     for (int x = 0; x < displaySize; x++) {
       for (int y = 0; y < displaySize; y++) {
 
@@ -70,7 +70,7 @@ public class FractalExplorer {
     display.repaint();
   }
 
-  private class Resetter implements ActionListener
+  private class Resetter implements ActionListener //Возвращает к изначальному значению
   {
     public void actionPerformed(ActionEvent e)
     {
@@ -79,7 +79,7 @@ public class FractalExplorer {
     }
   }
 
-  private class Clicker extends MouseAdapter
+  private class Clicker extends MouseAdapter // Изменения масштаба по клику , Zoom
   {
     @Override
     public void mouseClicked(MouseEvent e)
@@ -98,7 +98,7 @@ public class FractalExplorer {
     }
   }
 
-  public static void main(String[] args)
+  public static void main(String[] args) // Запуск программы
   {
     FractalExplorer displayExplorer = new FractalExplorer(800);
     displayExplorer.createAndShowGUI();

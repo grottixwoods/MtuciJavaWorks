@@ -1,5 +1,5 @@
 package lab6;
-
+// Все то же самое что и в 5 ЛР но появляются новые методы
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
@@ -94,7 +94,7 @@ public class FractalExplorer {
     }
   }
 
-  private void enableUI(boolean value) {
+  private void enableUI(boolean value) { //Новый метод. Передаем T или F , при которых он включает или выключает интерфейс
     comboBox.setEnabled(value);
     resetButton.setEnabled(value);
     saveButton.setEnabled(value);
@@ -178,14 +178,15 @@ public class FractalExplorer {
     }
   }
 
-  private class FractalWorker extends SwingWorker<Object, Object> {
-    int row;
+  private class FractalWorker extends SwingWorker<Object, Object> { //Высчитывает фрактал и отрисовывает в несколько потоков
+                                                                    // наследуемся от SwingWorker<Object
+    int row;                                                       // Делается в несколько потоков
     int[] rgbValues;
 
     private FractalWorker(int row) { this.row = row; }
 
-    @Override
-    protected Object doInBackground() {
+    @Override // Полиморфизм . Логика перемещается в метод doInBackground()
+    protected Object doInBackground() { // Переопределяем в метод , только используем множество потоков, логика та же
       rgbValues = new int[displaySize];
 
       for (int x = 0; x < rgbValues.length; x++) {
@@ -209,19 +210,19 @@ public class FractalExplorer {
       return null;
     }
 
-    protected void done() {
+    protected void done() { // После отрисовки
       for (int x = 0; x < rgbValues.length; x++) {
         display.drawPixel(x, row, rgbValues[x]);
       }
 
-      display.repaint(0, 0, row, displaySize, 1);
+      display.repaint(0, 0, row, displaySize, 1); // Вызывается метод обновления картинки
 
       rowRemaining--;
-      if (rowRemaining == 0) enableUI(true);
+      if (rowRemaining == 0) enableUI(true); // Если строк нету которые можно отрисовать , включаем UI
     }
   }
 
-  public static void main(String[] args)
+  public static void main(String[] args) // Запуск программы
   {
     FractalExplorer displayExplorer = new FractalExplorer(800);
     displayExplorer.createAndShowGUI();
