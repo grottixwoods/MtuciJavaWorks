@@ -2,7 +2,7 @@ package lab7;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-
+//Для удобства и хранения ссылок
 public class UrlDepthPair {
   public String url;
   public int depth;
